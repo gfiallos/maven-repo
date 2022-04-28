@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CacheHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.gf.gf-libs:: util-lib</a> &gt; <a href="index.source.html" class="el_package">com.gf.logic.cache</a> &gt; <span class="el_source">CacheHelper.java</span></div><h1>CacheHelper.java</h1><pre class="source lang-java linenums">package com.gf.logic.cache;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.ehcache.Cache;
+import org.springframework.data.util.CastUtils;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+
+/**
+ * Utility Class Cache helper.
+ */
+public class CacheHelper {
+
+
+  /**
+   * The constant LOG.
+   */
+<span class="fc" id="L25">  private static final Logger LOG = LogManager.getLogger(CacheHelper.class);</span>
+
+  /**
+   * The Cache.
+   */
+  private final Cache&lt;String, Object&gt; cache;
+
+  /**
+   * Instantiates a new Cache helper.
+   *
+   * @param pCache the p cache
+   */
+<span class="fc" id="L37">  public CacheHelper(Cache&lt;String, Object&gt; pCache) {</span>
+<span class="fc" id="L38">    CacheHelper.LOG.info(&quot;Initializing Cache&quot;);</span>
+<span class="fc" id="L39">    this.cache = pCache;</span>
+<span class="fc" id="L40">  }</span>
+
+  /**
+   * Instantiates a new Cache helper.
+   */
+<span class="fc" id="L45">  public CacheHelper() {</span>
+<span class="fc" id="L46">    this.cache = null;</span>
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * Clean cache.
+   */
+  public void cleanCache() {
+<span class="fc" id="L53">    this.cache.clear();</span>
+<span class="fc" id="L54">  }</span>
+
+  /**
+   * Contains key boolean.
+   *
+   * @param pKey the p key
+   * @return the boolean
+   */
+  public boolean containsKey(String pKey) {
+<span class="fc" id="L63">    return this.cache.containsKey(pKey);</span>
+  }
+
+  /**
+   * Gets value.
+   *
+   * @param &lt;T&gt;   the type parameter
+   * @param pKey  The key value
+   * @param pType The type value
+   * @return the value
+   */
+  public &lt;T&gt; Optional&lt;T&gt; getValue(String pKey, Class&lt;T&gt; pType) {
+<span class="fc" id="L75">    CacheHelper.LOG.debug(&quot;Optional {}&quot;, pType);</span>
+<span class="fc" id="L76">    return CastUtils.cast(this.prepareCache()</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                              .map(c -&gt; (c.containsKey(pKey)) ? c.get(pKey) : null));</span>
+
+  }
+
+  /**
+   * Gets value.
+   *
+   * @param &lt;T&gt;       the type parameter
+   * @param pKey      the p key
+   * @param pType     the p type
+   * @param pSupplier the p supplier
+   * @return the value
+   */
+  public &lt;T&gt; T getValue(String pKey, Class&lt;T&gt; pType, Supplier&lt;T&gt; pSupplier) {
+<span class="fc" id="L91">    var val = this.getValue(pKey, pType)</span>
+<span class="fc" id="L92">                  .orElseGet(pSupplier);</span>
+<span class="fc" id="L93">    this.putValue(pKey, val);</span>
+<span class="fc" id="L94">    return val;</span>
+  }
+
+  /**
+   * Gets value.
+   *
+   * @param pKey the key value
+   * @return the value
+   */
+  public Optional&lt;Object&gt; getValue(String pKey) {
+<span class="fc" id="L104">    return Optional.ofNullable(this.cache.get(pKey));</span>
+  }
+
+  /**
+   * List keys list.
+   *
+   * @return the list
+   */
+  public List&lt;String&gt; listKeys() {
+<span class="fc" id="L113">    return StreamSupport.stream(this.cache.spliterator(), false)</span>
+<span class="fc" id="L114">                        .map(Cache.Entry::getKey)</span>
+<span class="fc" id="L115">                        .collect(Collectors.toList());</span>
+  }
+
+  /**
+   * Prepare cache optional.
+   *
+   * @return the optional
+   */
+  private Optional&lt;Cache&lt;String, Object&gt;&gt; prepareCache() {
+<span class="fc" id="L124">    return Optional.ofNullable(this.cache);</span>
+  }
+
+  /**
+   * Put value t.
+   *
+   * @param &lt;T&gt;    the type parameter
+   * @param pKey   The key value
+   * @param pValue The value value
+   * @return the t
+   */
+  public &lt;T&gt; T putValue(String pKey, T pValue) {
+<span class="fc" id="L136">    this.prepareCache()</span>
+<span class="fc" id="L137">        .ifPresent(c -&gt; c.put(pKey, pValue));</span>
+
+<span class="fc" id="L139">    return pValue;</span>
+  }
+
+  /**
+   * Remove value.
+   *
+   * @param pKey the key value
+   */
+  public void removeValue(String pKey) {
+<span class="fc" id="L148">    this.cache.remove(pKey);</span>
+<span class="fc" id="L149">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

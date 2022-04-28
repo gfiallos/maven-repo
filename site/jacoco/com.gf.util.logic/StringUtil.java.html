@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.gf.gf-libs:: util-lib</a> &gt; <a href="index.source.html" class="el_package">com.gf.util.logic</a> &gt; <span class="el_source">StringUtil.java</span></div><h1>StringUtil.java</h1><pre class="source lang-java linenums">package com.gf.util.logic;
+
+import java.util.Optional;
+import java.util.function.UnaryOperator;
+
+/**
+ * The type String util.
+ * &lt;p&gt;
+ * Provides some useful methods for String
+ */
+public final class StringUtil {
+  /**
+   * Instantiates a new String util.
+   */
+  private StringUtil() {
+  }
+
+  /**
+   * Capitalize string.
+   *
+   * @param pData the p data
+   * @return the string
+   */
+  public static String capitalize(String pData) {
+<span class="fc" id="L25">    return manage(pData, StringUtil::manageCapitalize);</span>
+  }
+
+  /**
+   * Manage string.
+   *
+   * @param pData   the p data
+   * @param pMapper the p mapper
+   * @return the string
+   */
+  private static String manage(String pData, UnaryOperator&lt;String&gt; pMapper) {
+<span class="fc" id="L36">    return Optional.ofNullable(pData)</span>
+<span class="fc" id="L37">                   .map(pMapper)</span>
+<span class="fc" id="L38">                   .orElse(pData);</span>
+  }
+
+  /**
+   * Manage capitalize string.
+   *
+   * @param pData the p data
+   * @return the string
+   */
+  private static String manageCapitalize(String pData) {
+<span class="fc" id="L48">    var c = pData.toCharArray();</span>
+<span class="fc" id="L49">    c[0] = Character.toUpperCase(c[0]);</span>
+<span class="fc" id="L50">    return String.valueOf(c);</span>
+  }
+
+  /**
+   * Decapitalize string.
+   *
+   * @param pData the p data
+   * @return the string
+   */
+  public static String decapitalize(String pData) {
+<span class="fc" id="L60">    return manage(pData, StringUtil::manageDecapitalize);</span>
+  }
+
+  /**
+   * Manage decapitalize string.
+   *
+   * @param pData the p data
+   * @return the string
+   */
+  private static String manageDecapitalize(String pData) {
+<span class="fc" id="L70">    var c = pData.toCharArray();</span>
+<span class="fc" id="L71">    c[0] = Character.toLowerCase(c[0]);</span>
+<span class="fc" id="L72">    return String.valueOf(c);</span>
+  }
+
+  /**
+   * Split camel case string.
+   *
+   * @param pData the p data
+   * @return the string
+   */
+  public static String splitCamelCase(String pData) {
+<span class="fc" id="L82">    return pData.replaceAll(</span>
+<span class="fc" id="L83">            String.format(&quot;%s|%s|%s&quot;,</span>
+                    &quot;(?&lt;=[A-Z])(?=[A-Z][a-z])&quot;,
+                    &quot;(?&lt;=[^A-Z])(?=[A-Z])&quot;,
+                    &quot;(?&lt;=[A-Za-z])(?=[^A-Za-z])&quot;
+            ),
+            &quot; &quot;
+    );
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
