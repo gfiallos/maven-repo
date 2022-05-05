@@ -338,7 +338,7 @@
     </repository>
     <repository>
       <id>GF-REPO-URL</id>
-      <url>https://github.com/gfiallos/maven-repo/blob/main/mvn-artifact</url>
+      <url>https://gfiallos.github.io/maven-repo/mvn-artifact/</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
