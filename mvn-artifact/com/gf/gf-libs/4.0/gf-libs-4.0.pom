@@ -20,7 +20,7 @@
     <module>jpa-lib</module>
     <module>proxy-lib</module>
   </modules>
-  <build>
+  <!--build>
     <plugins>
       <plugin>
         <artifactId>maven-deploy-plugin</artifactId>
@@ -58,5 +58,5 @@
         </executions>
       </plugin>
     </plugins>
-  </build>
+  </build-->
 </project>
