@@ -20,4 +20,13 @@
     <module>jpa-lib</module>
     <module>proxy-lib</module>
   </modules>
+  <repositories>
+    <repository>
+      <id>GF-REPO-URL</id>
+      <url>https://gfiallos.github.io/maven-repo/mvn-artifact/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>
