@@ -163,7 +163,12 @@
           <outputDirectory>${project.build.directory}</outputDirectory>
           <branch>refs/heads/main</branch>
           <includes>
-            <include>**/*</include>
+            <include>**/*.jar</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+            <include>**/*.md5</include>
+            <include>**/*.sha1</include>
+            <include>**/*.pom</include>
           </includes>
           <merge>true</merge>
           <repositoryName>maven-repo</repositoryName>
