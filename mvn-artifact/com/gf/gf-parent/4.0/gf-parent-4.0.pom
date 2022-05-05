@@ -158,7 +158,7 @@
         <artifactId>site-maven-plugin</artifactId>
         <version>0.12</version>
         <configuration>
-          <message>Maven artifacts for ${project.artifact} - ${project.version}</message>
+          <message>Maven artifacts for ${project.artifact}</message>
           <noJekyll>true</noJekyll>
           <outputDirectory>${project.build.directory}</outputDirectory>
           <branch>refs/heads/main</branch>
