@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.gf.microservices</groupId>
+    <artifactId>utilities</artifactId>
+    <version>4.1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gf.microservices.utilities</groupId>
+  <artifactId>i18n</artifactId>
+  <name>${project.groupId}:: ${project.artifactId}</name>
+  <packaging>pom</packaging>
+  <version>4.1</version>
+  <modules>
+    <module>i18n-api</module>
+    <module>i18n-lib</module>
+    <module>i18n-proxy</module>
+  </modules>
+</project>
