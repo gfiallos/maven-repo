@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.gf</groupId>
+    <artifactId>gf-parent</artifactId>
+    <version>4.1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gf.microservices</groupId>
+  <artifactId>uegonzaga</artifactId>
+  <name>${project.groupId}:: ${project.artifactId}</name>
+  <version>4.1</version>
+  <packaging>pom</packaging>
+  <description>GF-uegonzaga-MicroServices</description>
+  <modules>
+    <module>roles</module>
+    <module>staff</module>
+    <module>plan</module>
+    <module>evaluations</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>com.gf.gf-libs</groupId>
+      <artifactId>test-lib</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <id>GF-REPO-URL</id>
+      <url>https://gfiallos.github.io/maven-repo/mvn-artifact/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>
