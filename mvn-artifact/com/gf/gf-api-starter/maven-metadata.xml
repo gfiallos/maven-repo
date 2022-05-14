@@ -3,10 +3,10 @@
   <groupId>com.gf</groupId>
   <artifactId>gf-api-starter</artifactId>
   <versioning>
-    <release>4.0</release>
+    <release>4.1</release>
     <versions>
-      <version>4.0</version>
+      <version>4.1</version>
     </versions>
-    <lastUpdated>20220505200337</lastUpdated>
+    <lastUpdated>20220514151124</lastUpdated>
   </versioning>
 </metadata>
