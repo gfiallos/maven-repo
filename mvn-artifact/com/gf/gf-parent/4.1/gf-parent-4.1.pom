@@ -16,7 +16,7 @@
     <group.project>com.gf</group.project>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gf.path>/Users/german/Fuentes/projects/gfbase/files</gf.path>
-    <gf.image.version>1.2</gf.image.version>
+
     <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     <target.src>11</target.src>
     <java.version>11</java.version>
@@ -50,7 +50,11 @@
     <groovy.version>3.0.7</groovy.version>
     <jasperreports.version>6.17.0</jasperreports.version>
     <poi.version>4.1.0</poi.version>
+    <!--docker-->
     <docker.image.prefix>gfiallos/gf-</docker.image.prefix>
+    <docker.run.image>gfiallos/jdk:corretto-11.0.11.2</docker.run.image>
+    <docker.image.version>1.2</docker.image.version>
+    <!--docker-->
     <github.global.server>github</github.global.server>
     <!-- Spring -->
     <spring.config.import>configserver:http://127.0.0.1:8888</spring.config.import>
@@ -196,8 +200,8 @@
               <configuration>${gf.path}/layers.xml</configuration>
             </layers>
             <image>
-              <name>${docker.image.prefix}${project.artifactId}:${gf.image.version}</name>
-              <runImage>gfiallos/jdk:corretto-11.0.11.1</runImage>
+              <name>${docker.image.prefix}${project.artifactId}:${docker.image.version}</name>
+              <runImage>${docker.run.image}</runImage>
             </image>
             <pullPolicy>IF_NOT_PRESENT</pullPolicy>
             <excludeDevtools>true</excludeDevtools>
