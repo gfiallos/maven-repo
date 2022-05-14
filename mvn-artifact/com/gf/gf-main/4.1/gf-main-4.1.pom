@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.gf</groupId>
+    <artifactId>gf-parent</artifactId>
+    <version>4.1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gf</groupId>
+  <artifactId>gf-main</artifactId>
+  <name>${project.groupId}:: ${project.artifactId}</name>
+  <version>4.1</version>
+  <packaging>pom</packaging>
+  <description>gf-main</description>
+  <modules>
+    <module>config</module>
+    <module>api-gateway</module>
+  </modules>
+  <repositories>
+    <repository>
+      <id>GF-REPO-URL</id>
+      <url>https://gfiallos.github.io/maven-repo/mvn-artifact/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>
