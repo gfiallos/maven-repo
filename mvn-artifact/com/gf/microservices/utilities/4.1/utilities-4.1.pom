@@ -16,6 +16,7 @@
     <module>i18n</module>
     <module>templates</module>
     <module>calculations</module>
+
     <!--module>eav</module-->
     <module>reports</module>
   </modules>
