@@ -9,6 +9,7 @@
   <groupId>com.gf.microservices</groupId>
   <artifactId>uegonzaga</artifactId>
   <name>${project.groupId}:: ${project.artifactId}</name>
+
   <version>4.1</version>
   <packaging>pom</packaging>
   <description>GF-uegonzaga-MicroServices</description>
