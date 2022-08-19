@@ -15,5 +15,6 @@
     <module>i18n-api</module>
     <module>i18n-lib</module>
     <module>i18n-proxy</module>
+    <module>i18n-graphql</module>
   </modules>
 </project>
